@@ -1,6 +1,3 @@
-country='United States of America'
-county_column = 1
-fires_column = 4
-file_name = 'Agrofood_co2_emission.csv'
-fires = get_column()
-print(fires)
+#Using Area, Extract number of Forest Fires for United States of America
+
+get_column('Agrofood_co2_emission.csv', 0, "United States of America", 3)

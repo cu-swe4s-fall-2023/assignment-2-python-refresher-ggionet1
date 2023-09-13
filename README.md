@@ -2,3 +2,4 @@
 # python-refresher
 
 Updated my_utils.py to define a function to return an array with desired values from a given column, given that the row has satisfied a specified condition. I then uploaded a csv (Agrofood_co2_emissions.csv), which will later be important for the project.
+Updated print_fires.py to extract forest fires in the United States
