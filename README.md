@@ -2,4 +2,6 @@
 # python-refresher
 
 Updated my_utils.py to define a function to return an array with desired values from a given column, given that the row has satisfied a specified condition. I then uploaded a csv (Agrofood_co2_emissions.csv), which will later be important for the project.
-Updated print_fires.py to extract forest fires in the United States
+Updated print_fires.py to extract forest fires in the United States.
+
+Subsequently updated my_utils.py result_column to default to 1 when no result column specified, and updated print_fires.py to employ named arguments instead of positional arguments.

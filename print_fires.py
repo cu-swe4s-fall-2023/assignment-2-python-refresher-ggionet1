@@ -2,4 +2,4 @@
 
 from my_utils import get_column
 
-get_column('Agrofood_co2_emission.csv', 0, "United States of America", 3)
+get_column(file_name='Agrofood_co2_emission.csv', query_column=0, query_value="United States of America", result_column=3)

@@ -4,7 +4,7 @@
 
 #Columns should be specified by index (order within the file) rather than name
 
-def get_column(file_name, query_column, query_value, result_column):
+def get_column(file_name, query_column, query_value, result_column=1):
     fire_array = []
     f = open(file_name, 'r')
     for l in f:
