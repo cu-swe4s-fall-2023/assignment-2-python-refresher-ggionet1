@@ -5,7 +5,9 @@ This code is writen in python, with an execution file (run.sh) in bash.
 
 ## Purpose of the project
 The goal was to extract information about the number of fires
-in a given country according to our data. 
+in a given country according to our data and output a given summary if requested.
+The summaries available are mean, median, and standard deviation (std_dev).
+
 This software can also be used to search through any csv
 to output values from a desired column, 
 conditionally based on the values from another column in the dataset.
@@ -14,12 +16,14 @@ conditionally based on the values from another column in the dataset.
 Creates a function which can extract values from a column conditionally,
 based on a condition set for a different column.
 
+Also creates summary functions to find mean, median, or std_dev.
+
 **print_fires.py** 
-Calls the get_column function.
+Calls the get_column function and makes use of the mean, median, or std_dev functions.
 
 **run.sh** 
 Is a file where which specifies which file to read
-and what data to extract, based on a specified condition.
+and what data to extract, based on a specified condition, and what summary function to run.
 
 ## How to install the software
 1. Verify that you have python3. If you do not have python, you can install it using the instructions [here](https://www.python.org/downloads/)
@@ -36,6 +40,7 @@ cd assignment-2-python-refresher-ggionet1
 
 ## How to Use
 my_utils.py creates the get_column() function and does not need to be changed to extract data from .csv
+    It also creates functions to summarize for mean, median, and standard deviation.
 print_fires.py calls the get_column() function from my_utils and also does not need to be changed to extract data from .csv
 
 To extract the column you desire, employ the get_column() function in the run.sh file. 
@@ -56,3 +61,26 @@ After this, run the run.sh file in the terminal like so:
 ```
 bash run.sh
 ```
+
+To run tests on each individual function, go to the tests folder and unit subfolder. While is folder, in terminal, run this file like so:
+```
+python3 -m unittest test_my_utils.py
+```
+
+To run a test on the overall functionality of this code, go to main directory. 
+You can do this by typing in terminal until you get back to the main:
+```
+cd ..
+```
+
+Once there in terminal, run this file like so:
+```
+bash test/func/test_my_utils_functional.sh
+```
+
+## Change Log
+-HW2 Files created
+-HW3 Files updated to adhere to best practices
+-HW4 my_utils.py updated to create summarizing functions. 
+    print_fires.py was updated to make use of the summarizing functions within get_column()
+    Functional and unit tests created and added into repository.
