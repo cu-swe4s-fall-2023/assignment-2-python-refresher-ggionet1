@@ -1,5 +1,6 @@
 import sys
 
+
 def get_column(file_name, query_column, query_value, result_column=1):
     """Output a list with a subset of values from the result column
     List is subset to when value in a query column matches the desired value.
@@ -53,3 +54,87 @@ def get_column(file_name, query_column, query_value, result_column=1):
             fire_list.append(result)
     f.close()
     return fire_list
+
+
+def mean(input_list):
+    """Output the mean of a list of floats or integers.
+
+    Parameters
+    -------
+    input_list: a list of floats or integers
+
+    Returns
+    -------
+    The mean of all values within the list
+
+    """
+    try:
+        sum_list = sum(input_list)
+    except TypeError:
+        print("Datatype issue. Input should be list of integers or floats.")
+        sys.exit(1)
+    try:
+        lst_avg = sum_list/len(input_list)
+    except ZeroDivisionError:
+        print("List is empty. Please input values to list.")
+        sys.exit(1)
+    return lst_avg
+
+
+def median(input_list):
+    """Output the mean of a list of floats or integers.
+
+    Parameters
+    ----------
+    input_list: a list of floats or integers
+
+    Returns
+    -------
+    The median of all values within the list
+    """
+    half = len(input_list)//2
+    input_list.sort()
+    try:
+        type(input_list) == (float, int)
+    except TypeError:
+        print("Values in input list are not all integers or floats")
+        sys.exit(1)
+    try:
+        if not len(input_list) % 2:
+            return (input_list[half - 1] + input_list[half]) / 2
+        elif len(input_list) % 2:
+            return input_list[half]
+    except IndexError:
+        print("List is empty. Please input values to list.")
+        sys.exit(1)
+
+
+def std_dev(input_list):
+    """Output the mean of a list of floats or integers.
+
+    Parameters
+    ----------
+    input_list: a list of floats or integers
+
+    Returns
+    -------
+    The standard deviation from all values within the list
+    """
+    samp_denom = len(input_list)-1
+    try:
+        sum_list = sum(input_list)
+    except TypeError:
+        print("Datatype issue. Input should be list of integers or floats.")
+        sys.exit(1)
+    try:
+        lst_avg = sum_list/len(input_list)
+    except ZeroDivisionError:
+        print("List is empty. Please input values to list.")
+        sys.exit(1)
+    sample_min_mean_array = []
+    for x in input_list:
+        sample_min_mean = ((x-lst_avg)**2)
+        sample_min_mean_array.append(sample_min_mean)
+    sample_min_mean_sum = sum(sample_min_mean_array)
+    std_dev_val = (sample_min_mean_sum/samp_denom)**.5
+    return std_dev_val
