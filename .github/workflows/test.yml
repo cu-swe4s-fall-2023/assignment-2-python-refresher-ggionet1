@@ -18,9 +18,13 @@ jobs:
         runs-on: ubuntu-latest
         steps: 
             - uses: actions/checkout@v2
+            - uses: conda-incubator/setup-miniconda@v2
+                with:
+                  activate-environment: swe4s
+                  environment-file: environment.yml
             - run: pycodestyle $(git ls-files "*.py")
     run_func_tests:
         runs-on: ubuntu-latest
         steps: 
             - uses: actions/checkout@v2
-            - run: bash test_my_utils_functional.sh
+            - run: bash test/func/test_my_utils_functional.sh
