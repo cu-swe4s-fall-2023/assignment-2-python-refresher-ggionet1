@@ -1,4 +1,4 @@
-# Assignment 3
+# Assignment 5
 
 ## Language
 This code is writen in python, with an execution file (run.sh) in bash.
@@ -12,18 +12,21 @@ This software can also be used to search through any csv
 to output values from a desired column, 
 conditionally based on the values from another column in the dataset.
 
-**my_utils.py** 
+**src/get_column_project/my_utils.py** 
 Creates a function which can extract values from a column conditionally,
 based on a condition set for a different column.
 
 Also creates summary functions to find mean, median, or std_dev.
 
-**print_fires.py** 
+**src/get_column_project/print_fires.py** 
 Calls the get_column function and makes use of the mean, median, or std_dev functions.
 
-**run.sh** 
+**src/get_column_project/run.sh** 
 Is a file where which specifies which file to read
 and what data to extract, based on a specified condition, and what summary function to run.
+
+**workflows/test.yml***
+Is a file specifying when to run continuous integration functional and unit testing.
 
 ## How to install the software
 1. Verify that you have python3. If you do not have python, you can install it using the instructions [here](https://www.python.org/downloads/)
@@ -37,8 +40,23 @@ git clone git@github.com:cu-swe4s-fall-2023/assignment-2-python-refresher-ggione
 cd assignment-2-python-refresher-ggionet1
 
 ```
+4. To run the current code, unit tests, and functional tests using continuous integration, you will merely need to push any branch (```git push *branchname*```) or make a pull request (```git pull```) from the main.
 
 ## How to Use
+The code will automatically run whenever a branch is pushed with the following code 
+
+```
+git push
+```
+or a pull request is made from the main:
+```
+git pull
+``` 
+
+Unit tests, functional tests, and python formatting will be tested if these events occur.
+
+To personalize the code further, please read below:
+
 my_utils.py creates the get_column() function and does not need to be changed to extract data from .csv
     It also creates functions to summarize for mean, median, and standard deviation.
 print_fires.py calls the get_column() function from my_utils and also does not need to be changed to extract data from .csv
@@ -80,7 +98,11 @@ bash test/func/test_my_utils_functional.sh
 
 ## Change Log
 -HW2 Files created
+
 -HW3 Files updated to adhere to best practices
+
 -HW4 my_utils.py updated to create summarizing functions. 
     print_fires.py was updated to make use of the summarizing functions within get_column()
     Functional and unit tests created and added into repository.
+
+-HW5 Added continuous integration file and workflow folder. Unit tests, functional tests, and python style guide will run automatically.
