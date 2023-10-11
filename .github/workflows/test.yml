@@ -6,6 +6,9 @@ on:
     pull_request:
         branches: [main]
 jobs:
+    build:
+        - name: Install dependencies
+            run:  pip install pycodestyle
     run_unit_tests:
         runs-on: ubuntu-latest
         steps:
@@ -18,7 +21,6 @@ jobs:
         steps: 
             - uses: actions/checkout@v2
             - run: 
-            pip install pycodestyle
             python3 pycodestyle $(git ls-files "*.py")
     run_func_tests:
         runs-on: ubuntu-latest
