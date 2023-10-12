@@ -25,7 +25,7 @@ Calls the get_column function and makes use of the mean, median, or std_dev func
 Is a file where which specifies which file to read
 and what data to extract, based on a specified condition, and what summary function to run.
 
-**workflows/test.yml***
+**.github/workflows/test.yml***
 Is a file specifying when to run continuous integration functional and unit testing.
 
 ## How to install the software
@@ -40,13 +40,13 @@ git clone git@github.com:cu-swe4s-fall-2023/assignment-2-python-refresher-ggione
 cd assignment-2-python-refresher-ggionet1
 
 ```
-4. To run the current code, unit tests, and functional tests using continuous integration, you will merely need to push any branch (```git push *branchname*```) or make a pull request (```git pull```) from the main.
+4. To run the current code, unit tests, and functional tests using continuous integration, you will merely need to push any branch (```git push origin *branchname*```) or make a pull request (```git pull```) from the main.
 
 ## How to Use
 The code will automatically run whenever a branch is pushed with the following code 
 
 ```
-git push
+git push origin *branchname*
 ```
 or a pull request is made from the main:
 ```
@@ -105,4 +105,5 @@ bash test/func/test_my_utils_functional.sh
     print_fires.py was updated to make use of the summarizing functions within get_column()
     Functional and unit tests created and added into repository.
 
--HW5 Added continuous integration file and workflow folder. Unit tests, functional tests, and python style guide will run automatically.
+-HW5 Added continuous integration file and workflow folder. 
+    Unit tests, functional tests, and python style guide will run automatically upon pushing any branch or pulling from main.

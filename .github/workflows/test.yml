@@ -10,19 +10,21 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - uses: conda-incubator/setup-miniconda@v2
-            - run:
+            - run: |
+                pip install numpy
                 cd test/unit
                 python3 -m unittest test_my_utils.py
+
     run_style_tests:
         runs-on: ubuntu-latest
         steps: 
             - uses: actions/checkout@v2
-            - uses: conda-incubator/setup-miniconda@v2
-            - run: python3 pycodestyle $(git ls-files "*.py")
+            - run: | 
+                pip install pycodestyle
+                pycodestyle $(git ls-files "*.py")
+
     run_func_tests:
         runs-on: ubuntu-latest
         steps: 
             - uses: actions/checkout@v2
-            - uses: conda-incubator/setup-miniconda@v2
             - run: bash test/func/test_my_utils_functional.sh

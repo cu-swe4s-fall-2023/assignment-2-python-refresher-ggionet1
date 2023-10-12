@@ -34,7 +34,7 @@ def main():
         d.append(float(i))
     summary_request = str(args.summary)
     if args.summary is None:
-        return(d)
+        return d
     elif summary_request == "mean":
         d_mean = my_utils.mean(d)
         print(d_mean)
