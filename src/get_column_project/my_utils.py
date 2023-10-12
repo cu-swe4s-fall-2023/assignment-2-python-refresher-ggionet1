@@ -95,7 +95,7 @@ def median(input_list):
     half = len(input_list)//2
     input_list.sort()
     try:
-        type(input_list) == (float, int)
+        type(input_list) is (float, int)
     except TypeError:
         print("Values in input list are not all integers or floats")
         sys.exit(1)
