@@ -106,4 +106,3 @@ bash test/func/test_my_utils_functional.sh
     Functional and unit tests created and added into repository.
 
 -HW5 Added continuous integration file and workflow folder (Version 4).
-    Unit tests, functional tests, and python style guide will run automatically upon pushing any branch or pulling from main.
