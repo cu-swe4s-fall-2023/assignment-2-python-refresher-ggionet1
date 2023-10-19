@@ -1,5 +1,10 @@
-import my_utils
 import argparse
+import sys
+import matplotlib
+import matplotlib.pyplot as plt
+matplotlib.use('Agg')
+sys.path.insert(0, 'src/get_column_project')  # noqa
+import my_utils  # noqa
 
 
 def get_args():
@@ -14,9 +19,11 @@ def get_args():
     parser.add_argument('--result_column',
                         help='The index of column containing desired results',
                         required=True)
-    parser.add_argument('--summary',
-                        help='The summary function (mean, median, std_dev)',
-                        required=False, default=None)
+    parser.add_argument('--graph_title',
+                        help='The title of the graph', type=str, required=True)
+    parser.add_argument('--out_graph',
+                        help='Name of output graph file with. .png extension',
+                        type=str, required=True)
     args = parser.parse_args()
     return args
 
@@ -27,29 +34,21 @@ def main():
     query_column = int(args.query_column)
     query_value = args.query_value
     result_column = int(args.result_column)
+    outgraph = args.out_graph
+    x = "Forest Fires"
+    y = "Frequency"
+    title = str(args.graph_title)
     t = my_utils.get_column(file_name, query_column,
                             query_value, result_column)
-    d = []
-    for i in t:
-        d.append(float(i))
-    summary_request = str(args.summary)
-    if args.summary is None:
-        if len(d) < 1:
-            raise ValueError("No values found for country provided.")
-            sys.exit(1)
-        else return d
-    elif summary_request == "mean":
-        d_mean = my_utils.mean(d)
-        print(d_mean)
-    elif summary_request == "median":
-        d_median = my_utils.median(d)
-        print(d_median)
-    elif summary_request == "std_dev":
-        d_std_dev = my_utils.std_dev(d)
-        print(d_std_dev)
-    else:
-        print("Please specify summary function as mean, median, or std_dev")
-        sys.exit(1)
+    float_list = list(map(float, t))
+    sorted_fire_list = sorted(float_list)
+    n, bins, patches = plt.hist(sorted_fire_list, bins=5, edgecolor='black')
+    plt.xticks(bins)
+    plt.xticks(fontsize=8)
+    plt.xlabel(x)
+    plt.ylabel(y)
+    plt.title(title)
+    plt.savefig(outgraph, bbox_inches='tight')
 
 
 if __name__ == '__main__':

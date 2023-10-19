@@ -1,0 +1,17 @@
+Country_list = ["Cuba", "Germany", "Brazil"]
+
+rule all:
+    input:
+        expand('doc/{Country}.png', Country=Country_list)
+
+rule download_data:
+    output:
+        "Agrofood_co2_emission.csv"
+    shell:
+        'wget -O {output} "https://docs.google.com/uc?export=download&id=1Wytf3ryf9EtOwaloms8HEzLG0yjtRqxr"'
+
+rule A:
+    input:  "Agrofood_co2_emission.csv"
+    output: "doc/{x}.png"
+    shell:
+        'python3 src/workflow/snakemake/fire/Visualization.py --file_name {input} --query_column 0 --query_value "{wildcards.x}" --result_column 3 --graph_title "Number of Forest Fires in {wildcards.x}" --out_graph "{output}"'

@@ -1,4 +1,25 @@
-# Assignment 5
+# Assignment 6
+
+## Scientific Presentation
+
+### Introduction
+
+For this assignment, we were curious about the distribution of fires among countries of different land mass. We hypothesized that number of forest fires would correlate to the land mass within a given country, but that the overall distribution of forest fires by country would be the same.
+
+We generated three plots, from a small, medium-sized, and large country to visualize the distribution of the number of yearly forest fires since 1992.
+
+### Methods
+
+Using a document containing fire data from countries around the world, we selected data from a given country using the get_column() function. In the Visualization.py file, we called this function and used this data to create a histogram for a given country. We ran a snakefile to create a histogram of one small country, one medium-sized country, and one large country.
+
+### Results
+
+![Cuba_fires](doc/Brazil.png?raw=true "Brazil Fires")
+![Germany_fires](doc/Brazil.png?raw=true "Brazil Fires")
+![Brazil_fires](doc/Brazil.png?raw=true "Brazil Fires")
+
+We found that the distributions were not the same for all countries. Indeed, Germany, a medium-sized country, had much less forest fires than the other two countries.
+We conclude that there are factors other than landmass (such as humidity or area of protected forest) which contribute to the number of forest fires per year.
 
 ## Language
 This code is writen in python, with an execution file (run.sh) in bash.

@@ -52,6 +52,9 @@ def get_column(file_name, query_column, query_value, result_column=1):
             sys.exit(1)
         if selected_column == query_value:
             fire_list.append(result)
+    if len(fire_list) < 1:
+        raise ValueError("No values found for query_value provided.")
+        sys.exit(1)
     f.close()
     return fire_list
 
