@@ -14,8 +14,8 @@ Using a document containing fire data from countries around the world, we select
 
 ### Results
 
-![Cuba_fires](doc/Brazil.png?raw=true "Brazil Fires")
-![Germany_fires](doc/Brazil.png?raw=true "Brazil Fires")
+![Cuba_fires](doc/Cuba.png?raw=true "Cuba Fires")
+![Germany_fires](doc/Germany.png?raw=true "Germany Fires")
 ![Brazil_fires](doc/Brazil.png?raw=true "Brazil Fires")
 
 We found that the distributions were not the same for all countries. Indeed, Germany, a medium-sized country, had much less forest fires than the other two countries.
@@ -49,6 +49,9 @@ and what data to extract, based on a specified condition, and what summary funct
 **.github/workflows/test.yml***
 Is a file specifying when to run continuous integration functional and unit testing.
 
+**src/workflow/snakemake/fire/snakefile***
+Is a snakefile which will generate histograms of fires for Brazil, Germany, and Cuba.
+
 ## How to install the software
 1. Verify that you have python3. If you do not have python, you can install it using the instructions [here](https://www.python.org/downloads/)
 
@@ -62,6 +65,12 @@ cd assignment-2-python-refresher-ggionet1
 
 ```
 4. To run the current code, unit tests, and functional tests using continuous integration, you will merely need to push any branch (```git push origin *branchname*```) or make a pull request (```git pull```) from the main.
+
+5. a) To run the snakemake file, simply download snakemake:
+```
+mamba install -c bioconda snakemake
+```
+
 
 ## How to Use
 The code will automatically run whenever a branch is pushed with the following code 
@@ -100,10 +109,16 @@ After this, run the run.sh file in the terminal like so:
 ```
 bash run.sh
 ```
+If you would like to generate histograms, you will simply need to run the snakefile located in the src folder. You can run the snakefile with the following code:
 
-To run tests on each individual function, go to the tests folder and unit subfolder. While is folder, in terminal, run this file like so:
 ```
-python3 -m unittest test_my_utils.py
+snakemake --snakefile src/workflow/snakemake/fire/snakefile -c -1
+```
+
+
+To run tests on each individual function, in terminal, run this file like so:
+```
+python3 -m unittest test/unit/test_my_utils.py
 ```
 
 To run a test on the overall functionality of this code, go to main directory. 
@@ -115,7 +130,10 @@ cd ..
 Once there in terminal, run this file like so:
 ```
 bash test/func/test_my_utils_functional.sh
+bash test/func/test_Visualization_functional.sh
+
 ```
+
 
 ## Change Log
 -HW2 Files created
@@ -127,3 +145,5 @@ bash test/func/test_my_utils_functional.sh
     Functional and unit tests created and added into repository.
 
 -HW5 Added continuous integration file and workflow folder (Version 4).
+
+-HW6 Added snakemake file and created histograms of forest fires.

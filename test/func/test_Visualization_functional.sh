@@ -5,6 +5,10 @@ run basic_add python3 src/workflow/snakemake/fire/Visualization.py --file_name '
 assert_equal $'test/func/Brazil_sample.png' $( ls $'test/func/Brazil_sample.png' )
 assert_exit_code 0
 
+run basic_add python3 src/workflow/snakemake/fire/Visualization.py --file_name 'test/data/test_viz_sampledataset.txt' --query_column 0 --query_value "Germany" --result_column 3 --graph_title "Number of Forest Fires in Germany" --out_graph 'test/func/Germany_sample.png'
+assert_equal $'test/func/Germany_sample.png' $( ls $'test/func/Germany_sample.png' )
+assert_exit_code 0
+
 run basic_add python3 src/workflow/snakemake/fire/Visualization.py --file_name 'test/data/test_viz_sampledataset.txt' --query_column 0 --query_value "Germany" --result_column 41 --graph_title "Number of Forest Fires in Germany" --out_graph 'test/func/Germany_sample.png'
 assert_exit_code 1
 
