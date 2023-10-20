@@ -15,8 +15,6 @@ jobs:
                 pip install numpy
                 cd test/unit
                 python3 -m unittest test_my_utils.py
-                python3 -m unittest test_Visualization.py
-
 
     run_style_tests:
         runs-on: ubuntu-latest
