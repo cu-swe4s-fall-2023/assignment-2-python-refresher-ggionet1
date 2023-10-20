@@ -37,7 +37,8 @@ def main():
         if len(d) < 1:
             raise ValueError("No values found for country provided.")
             sys.exit(1)
-        else return d
+        else:
+            return d
     elif summary_request == "mean":
         d_mean = my_utils.mean(d)
         print(d_mean)
