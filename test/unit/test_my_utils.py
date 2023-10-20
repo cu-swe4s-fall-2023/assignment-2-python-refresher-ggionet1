@@ -67,6 +67,11 @@ class Test_get_column(unittest.TestCase):
         self.assertIsNotNone(
             my_utils.get_column(self.test_file_name, 1, "China", 0))
 
+    def test_get_column(self):
+        with self.assertRaises(ValueError):
+            my_utils.get_column(self.test_file_name,
+                                1, "Country_Not_On_List", 0)
+
 
 #  Define main
 def main():
