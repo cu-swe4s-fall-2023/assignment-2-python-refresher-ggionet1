@@ -36,4 +36,5 @@ jobs:
                 pip install matplotlib
                 bash test/func/test_my_utils_functional.sh
                 bash test/func/test_Visualization_functional.sh
-                bash UsingLibraries/test/func/test_make_plot.sh
+                cd UsingLibraries
+                bash test/func/test_make_plot.sh
