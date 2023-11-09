@@ -1,0 +1,42 @@
+country1_in = "United States"
+country2_in = "Mexico"
+country3_in = "Canada"
+country4_in = "Guatemala"
+
+rule all:
+    input:
+        'doc/snakemake_merged_data.csv',
+        'doc/Panel_plot.png'
+
+rule download_clean_data:
+    output:
+        "doc/SM_Agrofood_co2_emission.csv"
+    shell:
+        'wget -O {output} "https://docs.google.com/uc?export=download&id=1Wytf3ryf9EtOwaloms8HEzLG0yjtRqxr"'
+
+rule download_gdp_data:
+    output:
+        "doc/SM_IMF_GDP.csv"
+    shell:
+        'wget -O {output} "https://drive.google.com/uc?export=download&id=1tuoQ9UTW_XRKgBOBaTLtGXh8h0ytKvFp"'
+
+rule A:
+    input:
+        emission_in = "doc/SM_Agrofood_co2_emission.csv",
+        gdp_in = "doc/SM_IMF_GDP.csv"
+
+    output:
+        "doc/snakemake_merged_data.csv"
+    shell:
+        'python3 src/snakemake_ruleA.py --dataset1 "{input.emission_in}" --dataset2 {input.gdp_in} --country1 country1_in \
+        --country2 country2_in --country3 country3_in --country4 country4_in --out_path_data "{output}"'
+
+rule B:
+    input:
+        merged_data = 'doc/snakemake_merged_data.csv'
+
+    output:
+        'doc/Panel_plot.png'
+    shell:
+        'python3 src/snakemake_ruleB.py --dataset {input.merged_data} --country1 country1_in --country2 country2_in \
+        --country3 country3_in --country4 country4_in --out_path "{output}"'
