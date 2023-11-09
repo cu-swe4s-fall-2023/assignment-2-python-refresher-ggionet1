@@ -13,6 +13,8 @@ jobs:
             - uses: actions/checkout@v2
             - run: |
                 pip install numpy
+                pip install pandas
+                pip install matplotlib
                 cd test/unit
                 python3 -m unittest test_my_utils.py
                 cd ../../UsingLibraries/test/unit
@@ -34,4 +36,4 @@ jobs:
                 pip install matplotlib
                 bash test/func/test_my_utils_functional.sh
                 bash test/func/test_Visualization_functional.sh
-                bash UsingLibraries/bash/func/test_make_plot.sh
+                bash UsingLibraries/test/func/test_make_plot.sh
