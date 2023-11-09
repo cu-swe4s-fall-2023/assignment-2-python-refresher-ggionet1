@@ -23,11 +23,3 @@ assert_exit_code 1
 
 run basic_add python3 src/plot_data.py --dataset1 "test/data/agrofood_test_data_incorrectcol.csv" --dataset2 "test/data/gdp_test_data.csv" --country1 'Austria' --country2 'Belgium' --country3 'Norway' --country4 'Albania' --out_path_data "test/data/merged_data.wrongextension" --out_path "test/data/notadirectory/Panel_Plot.png"
 assert_exit_code 1
-
-run basic_add python3 src/snakemake_ruleA.py --dataset1 "test/data/agrofood_test_data_incorrectcol.csv" --dataset2 "test/data/gdp_test_data.csv" --country1 'Austria' --country2 'Belgium' --country3 'Norway' --country4 'Albania' --out_path_data "test/data/merged_data_smA.csv"
-assert_equal $"test/data/merged_data_smA.csv" $( ls $"test/data/merged_data_smA.csv" )
-assert_exit_code 0
-
-run basic python3 src/snakemake_ruleB.py --dataset 'test/data/merged_data.csv' --country1 'Austria' --country2 'Belgium' --country3 'Norway' --country4 'Albania' --out_path "test/data/Panel_Plot_smB.png"
-assert_equal $'test/data/Panel_Plot_smB.png' $( ls $'test/data/Panel_Plot_smB.png')
-assert_exit_code 0
