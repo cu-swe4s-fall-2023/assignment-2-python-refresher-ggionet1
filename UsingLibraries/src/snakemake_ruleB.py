@@ -20,7 +20,7 @@ def get_args():
                         help='The first value to search for column "Area"',
                         required=True)
     parser.add_argument('--dataset',
-                        help='A filepath ending in .csv containing merged data',
+                        help='A filepath ending in .csv with merged data',
                         required=True)
     parser.add_argument('--out_path',
                         help='A filepath ending in .png to save the graph',

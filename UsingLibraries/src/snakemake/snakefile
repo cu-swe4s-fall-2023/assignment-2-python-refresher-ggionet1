@@ -1,8 +1,3 @@
-country1_in = "United States"
-country2_in = "Mexico"
-country3_in = "Canada"
-country4_in = "Guatemala"
-
 rule all:
     input:
         'doc/snakemake_merged_data.csv',
@@ -12,7 +7,7 @@ rule download_clean_data:
     output:
         "doc/SM_Agrofood_co2_emission.csv"
     shell:
-        'wget -O {output} "https://docs.google.com/uc?export=download&id=1Wytf3ryf9EtOwaloms8HEzLG0yjtRqxr"'
+        'wget -O {output} "https://drive.google.com/uc?export=download&id=16F9IG1_T2zXV9ooB2PmPU_2uCdoMhbhwPJLQtpxiY0o"'
 
 rule download_gdp_data:
     output:
@@ -28,8 +23,8 @@ rule A:
     output:
         "doc/snakemake_merged_data.csv"
     shell:
-        'python3 src/snakemake_ruleA.py --dataset1 "{input.emission_in}" --dataset2 {input.gdp_in} --country1 country1_in \
-        --country2 country2_in --country3 country3_in --country4 country4_in --out_path_data "{output}"'
+        'python3 src/snakemake_ruleA.py --dataset1 "{input.emission_in}" --dataset2 {input.gdp_in} --country1 "United States" \
+        --country2 "Mexico" --country3 "Canada" --country4 "Guatemala" --out_path_data "{output}"'
 
 rule B:
     input:
@@ -38,5 +33,5 @@ rule B:
     output:
         'doc/Panel_plot.png'
     shell:
-        'python3 src/snakemake_ruleB.py --dataset {input.merged_data} --country1 country1_in --country2 country2_in \
-        --country3 country3_in --country4 country4_in --out_path "{output}"'
+        'python3 src/snakemake_ruleB.py --dataset {input.merged_data} --country1 "United States" \
+        --country2 "Mexico" --country3 "Canada" --country4 "Guatemala" --out_path "{output}"'
