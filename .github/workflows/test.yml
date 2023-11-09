@@ -15,6 +15,8 @@ jobs:
                 pip install numpy
                 cd test/unit
                 python3 -m unittest test_my_utils.py
+                cd ../../UsingLibraries/test/unit
+                python3 -m unittest test_collect_data.py
 
     run_style_tests:
         runs-on: ubuntu-latest
@@ -32,3 +34,4 @@ jobs:
                 pip install matplotlib
                 bash test/func/test_my_utils_functional.sh
                 bash test/func/test_Visualization_functional.sh
+                bash UsingLibraries/bash/func/test_make_plot.sh
