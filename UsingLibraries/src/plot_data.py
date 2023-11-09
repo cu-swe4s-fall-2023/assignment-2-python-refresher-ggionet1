@@ -25,6 +25,9 @@ def get_args():
     parser.add_argument('--country4',
                         help='The first value to search for column "Area"',
                         required=True)
+    parser.add_argument('--out_path_data',
+                        help='A filepath ending in .csv to save merged data',
+                        required=True)
     parser.add_argument('--out_path',
                         help='A filepath ending in .png to save the graph',
                         required=True)
@@ -40,12 +43,14 @@ def main():
     country2 = args.country2
     country3 = args.country3
     country4 = args.country4
+    out_path_csv = str(args.out_path_data)
     out_path_png = str(args.out_path)
-    data_for_plot = cd.clean_dataset(dataset1_fires,
-                                     dataset2_gdp, country1,
-                                     country2, country3,
-                                     country4)
-    cd.plot_data(data_for_plot, country1,
+    cd.clean_dataset(dataset1_fires,
+                     dataset2_gdp, country1,
+                     country2, country3,
+                     country4,
+                     out_path_csv)
+    cd.plot_data(out_path_csv, country1,
                  country2, country3,
                  country4, out_path_png)
 
